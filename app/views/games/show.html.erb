@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Победитель:</b>
+  <%= @game.winner %>
+</p>
+
+<p>
+  <b>Количество ходов:</b>
+  <%= @game.steps %>
+</p>
+<%= link_to 'Подробнее', details_path %>
+
+
+<%= link_to 'Предыдущие игры', games_path %>
+
+

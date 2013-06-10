@@ -1,0 +1,24 @@
+<h1>Игры</h1>
+
+<table>
+  <tr>
+    <th>Победитель</th>
+    <th>Количество ходов</th>
+    <th>Дата</th>
+  
+  </tr>
+
+<% @games.each do |game| %>
+  <tr>
+    <td><%= game.winner %></td>
+    <td><%= game.steps %></td>
+    <td><%= game.created_at %></td>
+    <td><%= link_to 'Show', game %></td>
+    <td><%= link_to 'Destroy', game, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<a href="/home/index">Новая игра</a>
+

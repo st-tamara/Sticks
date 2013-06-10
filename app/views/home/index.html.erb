@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Палочки</title>
+	<style>
+	body {background-color: black;
+		color: white;}
+
+	</style>
+	</head>
+	<body>
+
+		<h1>Игра Палочки.</h1>
+		
+		<script>
+			function start(){
+			var min_random = 10;
+			var max_random = 40;
+			max_random++;
+			var range = max_random - min_random;
+			var x=Math.floor(Math.random()*range) + min_random;
+			alert("Количество палочек " + x);
+			
+			var who=Math.random();		
+			if (who>=0.5)
+				{who='Сервер';}
+			else {who='Браузер';} 
+			
+			alert("начинает " + who);
+			
+			
+			
+			if (who=='Браузер') {
+				window.location.assign("/home/second?a=" + x + "&b=" + 0);}
+			else {window.location.assign("/home/redirector?a=" + x + "&b=" + 0);}
+		}
+		
+		</script>
+		<form>
+			<input type="button" value="Новая игра" onClick="start()">
+		</form>
+		<%= link_to 'Предыдущие игры', games_path %>
+	</body>
