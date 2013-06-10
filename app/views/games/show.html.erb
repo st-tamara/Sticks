@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ходы</title>
+  <style>
+  body {background-color: #FFFFCC;}
+  table, th, td {text-align: center;}
+  </style>
+</head>
+<body>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -9,9 +19,33 @@
   <b>Количество ходов:</b>
   <%= @game.steps %>
 </p>
-<%= link_to 'Подробнее', details_path %>
+
+<h2>Ходы</h2>
+      <table>
+        <tr>
+          <th>Игрок</th>
+          <th>Осталось </br> палочек</th>
+          <th>Когда сделан ход</th>
+          <th>Палочек взято</th>
+        </tr>
+        <% @game.details.each do |detail| %>
+        <tr>
+          <td><%= detail.player %></td>
+          <td><%= detail.sticks %></td>
+          <td><%= detail.created_at %></td>
+        	<td> <%= detail.take%> </td>
+        </tr> 
+        <% end %>
+        <tfoot>
+          <tr>
+            <td colspan="4">Игра окончена</td>
+          </tr>
+        </tfoot>
+      </table>
 
 
-<%= link_to 'Предыдущие игры', games_path %>
+<%= link_to 'Остальные игры', games_path %>
+<p><a href="/home/index">Новая игра</a></p>
 
-
+  </body>
+</html>

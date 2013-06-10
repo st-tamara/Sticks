@@ -23,36 +23,36 @@ class HomeController < ApplicationController
   end
 
   def redirector
-  	if params[:id].to_i>0
-  	@gameid=params[:id]
-      game=Game.find(@gameid)
-      detail=Detail.new player:"Browser", sticks: (params[:a].to_i + params[:b].to_i), take: params[:b].to_i, game_id:game.id
-      detail.save	
-
-  	else
-  		
-
-      game=Game.new
+  	if params[:id].to_i==0
+  		game=Game.new
       game.save
       if params[:b].to_i!=0
         detail=Detail.new player:"Browser", sticks: (params[:a].to_i + params[:b].to_i), take: params[:b].to_i, game_id:game.id
         detail.save
       end
+
+  	else
+  		@gameid=params[:id]
+      game=Game.find(@gameid)
+      detail=Detail.new player:"Browser", sticks: (params[:a].to_i + params[:b].to_i), take: params[:b].to_i, game_id:game.id
+      detail.save
+
+      
     end
 
-  	
+    	
 
-	@k=params[:a].to_i
-	@c=params[:c].to_i
-	@c=@c+1
+  	@k=params[:a].to_i
+  	@c=params[:c].to_i
+  	@c=@c+1
 
-	if (@k==3) 
-	@b=2
-	elsif ((@k==2)||(@k==1))
-	@b=1
-	else 
-	@b=rand(3) + 1
-	end
+  	if (@k==3) 
+  	@b=2
+  	elsif ((@k==2)||(@k==1))
+  	@b=1
+  	else 
+  	@b=rand(3) + 1
+  	end
 
     detail=Detail.new player: "Server", sticks: @k, take: @b, game_id: game.id
     detail.save

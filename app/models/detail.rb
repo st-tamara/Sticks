@@ -1,3 +1,3 @@
 class Detail < ActiveRecord::Base
-	belongs_to:Game
+	belongs_to :game
 end
